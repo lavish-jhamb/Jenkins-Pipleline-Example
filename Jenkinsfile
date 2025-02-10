@@ -52,6 +52,19 @@ pipeline{
         }
 
         stage("Test"){
+        parallel{
+            stage("Test A"){
+                steps{
+                    echo "This is Test A"
+                }
+            }
+
+            stage("Test B"){
+                steps{
+                    echo "This is Test B"
+                }
+            }
+        }
             steps{
                 bat 'echo "Test Step"'
             }
