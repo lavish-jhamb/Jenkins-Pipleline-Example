@@ -1,33 +1,59 @@
+// pipeline{
+//     agent any
+//
+//     stages{
+//
+//         stage("compile"){
+//             steps{
+//                 bat 'javac Main.java'
+//             }
+//         }
+//
+//         stage("run"){
+//             steps{
+//                 bat 'java Main'
+//             }
+//         }
+//
+//     }
+//
+//     post{
+//         always{
+//             bat 'echo "always"'
+//         }
+//
+//         success{
+//             bat 'echo "success"'
+//         }
+//
+//         failure{
+//             bat 'echo "failure"'
+//         }
+//     }
+// }
+
 pipeline{
     agent any
 
     stages{
 
-        stage("compile"){
+        stage("Compile"){
             steps{
-                bat 'javac Main.java'
+                bat 'echo "compile step"'
             }
         }
 
-        stage("run"){
+        stage("Test"){
             steps{
-                bat 'java Main'
+                bat 'echo "Test Step"'
             }
         }
 
-    }
 
-    post{
-        always{
-            bat 'echo "always"'
-        }
-
-        success{
-            bat 'echo "success"'
-        }
-
-        failure{
-            bat 'echo "failure"'
+        stage("Deploy"){
+            steps{
+                bat 'echo "Deploy Step"'
+            }
         }
     }
 }
