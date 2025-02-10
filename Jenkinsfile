@@ -35,6 +35,14 @@
 pipeline{
     agent any
 
+    environment {
+        NAME = "Lavish"
+    }
+
+    parameters {
+      string defaultValue: 'DEMO', name: 'LASTNAME'
+    }
+
     stages{
 
         stage("Compile"){
@@ -49,10 +57,15 @@ pipeline{
             }
         }
 
-
         stage("Deploy"){
             steps{
                 bat 'echo "Deploy Step"'
+            }
+        }
+
+        stage("Execute Env variables"){
+            steps{
+                echo "Hello $NAME ${params.LASTNAME}"
             }
         }
     }
